@@ -2,5 +2,10 @@
 /__pycache__ 
 
 # other files
-.png
-.csv
+*.png
+*.csv
+*.bak
+*.dat
+*.dir
+*.zip
+*.cmd

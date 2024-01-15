@@ -2,7 +2,8 @@ import datetime
 import time
 # import traceback
 from pathlib import Path
-import tktools.easyfiledialogs
+import tktools.easyfiledialogs as easyfiledialogs
+import tktools.tkled
 import logging
 import tkinter as tk
 

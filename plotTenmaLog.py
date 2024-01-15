@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import datetime as dt
 from pathlib import Path
-from tktools import get_path_to_open_file
+from easyfiledialogs import get_path_to_open_file
 
 def get_timestamp_from_string(string):
     return dt.datetime.fromisoformat(string)

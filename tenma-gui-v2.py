@@ -9,17 +9,18 @@ from tkinter import scrolledtext
 import traceback
 
 # my libraries
-from tktools.easyfiledialogs import get_path_to_save_file
 import tenma_interpreter
-import tktools
 import plotTenmaLog
-
+from .easyfiledialogs import get_path_to_save_file
+from .simplelogger import SimpleLogger
+from .tkserial import tkSerial
+from .tkgraph import tkGraphMultiLine
 
 # def get_log_line_from_tenma_message(msg_in):
 #     log_line = f"{msg_in['Time']},{msg_in['Mode']},{msg_in['OL']},{msg_in['Display Value']},{msg_in['Display Unit']},{msg_in['Actual Value']},{msg_in['Actual Unit']},{msg_in['AD/DC']},{msg_in['Reading Type']},{msg_in['Hold']},{msg_in['Meter State']},{msg_in['Bar Graph State']},{msg_in['Bar Graph Value']},{msg_in['Z1']},{msg_in['Z2']},{msg_in['Z3']},{msg_in['Z4']}"
 #     return log_line
 
-datalogger = tktools.SimpleLogger()
+datalogger = SimpleLogger()
 datalogger.set_logfile_prefix('Tenma_')
 
 def quit():
@@ -84,7 +85,7 @@ window = tk.Tk()
 window.title('Tenma 72-2610 Multimeter Interface')
 tenmaframe = tk.Frame(window)
 
-serial_connection = tktools.tkSerial(window, name='Serial:', borderwidth=4, relief=tk.GROOVE)
+serial_connection = tkSerial(window, name='Serial:', borderwidth=4, relief=tk.GROOVE)
 serial_connection.configure_serial_port(
     baud = 2400,
     RTS = False, # required for tenma meters, as these lines power the optical reciever circuit
@@ -97,7 +98,7 @@ lbl_display_val = tk.Label(display_value_readout, text='------', justify='center
 lbl_display_val.pack()
 display_value_readout.pack()
 
-graph = tktools.tkGraphMultiLine(tenmaframe)
+graph = tkGraphMultiLine(tenmaframe)
 graph.set_xlabel("Time [s]")
 graph.pack()
 graph.add_series(name="tenma", label="Tenma Actual Value")
